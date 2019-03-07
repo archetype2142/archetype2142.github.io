@@ -1,6 +1,5 @@
 body {
   margin-top: 20px;
-  margin-bottom: 50px;
   background-color: #fbc547;
   color: #333;
   font-size: 15px;
@@ -25,4 +24,18 @@ hr {
     background-color: gray; } }
 
 p {
-  color: #484848; }
+  color: #505050; }
+
+footer {
+  background: #ffffff;
+  min-height: 50px;
+  padding: 10px 10px; }
+
+.contact {
+  width: 20px;
+  height: 50px;
+  background-color: blue; }
+
+.image {
+  width: 50px;
+  height: 50px; }
