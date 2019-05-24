@@ -3,13 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Use the title from a page's frontmatter if it has one -->
     <title>Ritwick Malhotra</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="/stylesheets/site.css" rel="stylesheet" />
-    <script src="/javascripts/site.js"></script>
+    <link href="stylesheets/site.css" rel="stylesheet" />
+    <script src="javascripts/site.js"></script>
 
   </head>
 
@@ -54,6 +53,15 @@
       <h2>Personal Projects</h2>
     </div>
     <div class="col-sm-8">
+      <h5>Asset Tracking</h5>
+      <p> Used magnetometry to track location of assets in a space, unlike traditional methods that include lateration technique. RSSI value is used to calculate distance based on signal strength and digital compass gives direction to have a complete vector and find precise location. Entire information on <a href="https://github.com/archetype2142/asset_tracking">github</a></p>
+      <b> Technologies used: Rails, C, twoJS</b>
+      <hr>
+
+      <h5>HackCircles(WAWCode Hackathon)</h5>
+      <p> Won third place at <a href="http://www.wawcode.pl/">Wawcode hackathon</a> 2019, for making an <a href="https://github.com/archetype2142/hack-circles">app</a> that allows students to find interest groups. </p>
+      <b> Technologies used: Rails, Vue.JS, Material, Facebook graph api</b>
+      <hr>
       <h5>Voting App</h5>
       <p> Created a simple voting platform to help students vote for and choose groups in my classroom. </p>
       <b> Technologies used: Rails, AngularJS, Docker, Bootstrap</b>
@@ -116,9 +124,29 @@
   </div>
 </footer>
 
+<footer style="padding-bottom: 40px;">
+  <div class="container text-center">
+    <h2 class="text-center"> Contact </h2>
+  <div class="row" style="color: #505050">
+    <div class="col-sm-4">
+      +48 577 599 195
+    </div>
+    <div class="col-sm-4">
+      malhotraritwick2011@gmail.com
+    </div>
+    <div class="col-sm-4">
+      Ludwika Warynskiego 12A, Warsaw, PL
+    </div>
+    <hr>
+    <div class="col-sm-12">
+      <a href="http://github.com/archetype2142"> <img style="height: 50px;" class="img-thumbnail" src="images/git.svg"> </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href=" https://www.linkedin.com/in/malhotraritwick"> <img style="height: 50px;" class="img-thumbnail" src="images/link.svg"> </a>
+    </div>
+  </div>
+</footer>
+
   </body>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/core.js" /> 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 </html>
