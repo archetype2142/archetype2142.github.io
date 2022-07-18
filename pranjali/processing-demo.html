@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Pranjali Processing Demo</title>
+    <script src="processing.min.js"></script>
+  </head>
+  <body>
+    <script type="text/processing">
+      class Star {
+        float x;
+        float y;
+        float z;
+        Star() {
+          x = random(-width/2, width/2);
+          y = random(-height/2, height/2);
+          z = random(width/2);
+        }
+        void update() {
+          z = z - 1;
+          if (z < 1) {
+            z = width;
+            x = random(-width, width);
+            y = random(-height, height);
+          }
+        }
+         void show() {
+          fill(255);
+          noStroke();
+          float sx = map(x / z, 0, 1, 0, width/2);
+          float sy = map(y / z, 0, 1, 0, height/2);;
+          float r = map(z, 0, width/2, 16, 0);
+          ellipse(sx, sy, r, r);
+         }
+      }
+ 
+      PImage space;
+      float x;
+      float y;
+      float easing = 0.03;
+      Star[] stars = new Star[500];
+
+      void setup() {
+         size(1920,1080);
+        for (int i = 0; i < stars.length; i++) {
+          stars[i] = new Star();
+        }
+
+        space = loadImage("./data/space.png");
+      }
+
+      void draw() {
+        background(0);
+       translate(width/2, height/2);
+        for (int i = 0; i < stars.length; i++) {
+          stars[i].update();
+          stars[i].show();
+        }
+         float targetX = mouseX;
+        float dx = targetX - x -width/2;
+        x += dx * easing;
+
+        float targetY = mouseY;
+        float dy = targetY - y -height/2;
+        y += dy * easing;
+
+        image(space, x, y);
+      }
+    </script>
+    <canvas style="max-width: 100vw;"></canvas>
+  </body>
+</html>
