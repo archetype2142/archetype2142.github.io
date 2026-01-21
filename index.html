@@ -140,7 +140,7 @@
   "personal_info": {
     "name": "Ritwick Malhotra",
     "title": "Web Developer",
-    "about": "Young software engineer with several years of industry experience, working with and building teams of highly efficient engineers, following best work practices and using the newest tools and techniques.",
+    "about": "Senior Software Engineer with 8+ years of experience building high-scale distributed systems and AI-driven products. Expert in Ruby on Rails, React, and Python, with a proven track record of optimizing platforms for 80M+ users. Passionate about bridging hardware and software through custom IoT solutions and AI vision systems.",
     "contact": {
       "phone": "+48 577 599 195",
       "email": "malhotraritwick2011@gmail.com",
@@ -434,13 +434,25 @@
                 <a href="${contact.linkedin}" target="_blank" class="flex items-center hover:text-blue-600"><i class="fab fa-linkedin mr-2 text-blue-600 opacity-75"></i> LinkedIn</a>
             `;
 
-            // Skills
             const skillsContainer = document.getElementById('skills-list');
-            data.skills.languages_and_frameworks.forEach(skill => {
-                const span = document.createElement('span');
-                span.className = 'skill-badge';
-                span.textContent = skill;
-                skillsContainer.appendChild(span);
+            const categories = {
+                "Backend & Architecture": ["Ruby on Rails", "Python", "gRPC", "GraphQL", "Postgresql", "C/C++", "Redis"],
+                "Frontend & Mobile": ["React", "React Native", "ThreeJS", "AngularJS", "VueJs", "Tailwind CSS"],
+                "Cloud & DevOps": ["Kamal", "Docker", "Kubernetes", "AWS", "Azure", "GCP", "Linode (Bare Metal)"],
+                "Specialized": ["AI Vision (YOLO)", "PCB Design (KiCad)", "3D Printing", "IoT", "Data Visualization"]
+            };
+
+            skillsContainer.innerHTML = '';
+            Object.entries(categories).forEach(([category, skills]) => {
+                const catDiv = document.createElement('div');
+                catDiv.className = 'w-full mb-3';
+                catDiv.innerHTML = `
+                    <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">${category}</div>
+                    <div class="flex flex-wrap -m-0.5">
+                        ${skills.map(skill => `<span class="skill-badge">${skill}</span>`).join('')}
+                    </div>
+                `;
+                skillsContainer.appendChild(catDiv);
             });
 
             // Languages
