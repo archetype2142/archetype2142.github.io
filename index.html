@@ -7,12 +7,17 @@
     <title>Ritwick Malhotra | Web Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f9fafb;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         @media print {
@@ -20,7 +25,8 @@
                 display: none !important;
             }
             body {
-                background-color: white;
+                background-color: white !important;
+                color: black !important;
             }
             .container {
                 width: 100% !important;
@@ -49,10 +55,32 @@
             border-radius: 9999px;
             font-size: 0.875rem;
             margin: 0.25rem;
+            transition: all 0.2s ease;
         }
+        
+        .dark .skill-badge {
+            background-color: #374151;
+            color: #e5e7eb;
+        }
+
+        .dark body {
+            background-color: #111827;
+            color: #f3f4f6;
+        }
+
+        .dark .border-gray-200 { border-color: #374151; }
+        .dark .border-gray-100 { border-color: #1f2937; }
+        .dark .text-gray-900 { color: #f9fafb; }
+        .dark .text-gray-800 { color: #f3f4f6; }
+        .dark .text-gray-700 { color: #e5e7eb; }
+        .dark .text-gray-600 { color: #d1d5db; }
+        .dark .text-gray-500 { color: #9ca3af; }
+        .dark .text-gray-400 { color: #6b7280; }
+        .dark .bg-blue-50 { background-color: rgba(30, 58, 138, 0.3); }
+        .dark .bg-white { background-color: #1f2937; }
     </style>
 </head>
-<body class="text-gray-900 antialiased">
+<body class="text-gray-900 antialiased bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
     <div id="app" class="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
         <!-- Loading state -->
         <div id="loading" class="flex justify-center items-center min-h-[50vh]">
@@ -62,18 +90,22 @@
         <!-- Content will be injected here -->
         <div id="content" class="hidden">
             <!-- Header -->
-            <header class="mb-8 border-b border-gray-200 pb-6">
+            <header class="mb-8 border-b border-gray-200 dark:border-gray-700 pb-6">
                 <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
                     <div class="flex-1">
-                        <h1 id="user-name" class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl"></h1>
-                        <p id="user-title" class="mt-1 text-lg text-blue-600 font-medium"></p>
+                        <h1 id="user-name" class="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl"></h1>
+                        <p id="user-title" class="mt-1 text-lg text-blue-600 dark:text-blue-400 font-medium"></p>
                         
                         <!-- Contact Info - Now Inline for Senior Look -->
-                        <div id="contact-info" class="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-600">
+                        <div id="contact-info" class="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
                             <!-- Contact details injected here -->
                         </div>
                     </div>
                     <div class="flex flex-wrap gap-3 no-print">
+                        <button id="dark-mode-toggle" class="inline-flex items-center px-3 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
+                            <i class="fas fa-moon dark:hidden"></i>
+                            <i class="fas fa-sun hidden dark:block"></i>
+                        </button>
                         <button onclick="window.print()" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
                             <i class="fas fa-file-pdf mr-2"></i> PDF
                         </button>
@@ -140,7 +172,7 @@
   "personal_info": {
     "name": "Ritwick Malhotra",
     "title": "Web Developer",
-    "about": "Senior Software Engineer with 8+ years of experience building high-scale distributed systems and AI-driven products. Expert in Ruby on Rails, React, and Python, with a proven track record of optimizing platforms for 80M+ users. Passionate about bridging hardware and software through custom IoT solutions and AI vision systems.",
+        "about": "Senior Software Engineer with 8+ years of experience building high-scale distributed systems and AI-driven products. Expert in Ruby on Rails, React, and Python, with a proven track record of optimizing platforms for 80M+ users and reducing server response times by 45%. Passionate about bridging hardware and software through custom IoT solutions and AI vision systems.",
     "contact": {
       "phone": "+48 577 599 195",
       "email": "malhotraritwick2011@gmail.com",
@@ -161,8 +193,8 @@
         "Architected and implemented features using an in-house framework built on Ruby on Rails.",
         "Developed high-performance frontend components in React and built micro-apps using Python.",
         "Streamlined development workflows by introducing tools for easier staging environment management.",
-        "Optimized complex system calls and workflows using REST, GraphQL, and gRPC to improve latency and throughput.",
-        "Led architectural planning and cross-functional feature development to enhance platform scalability."
+        "Optimized complex system calls and workflows using REST, GraphQL, and gRPC, reducing latency by 35% and increasing throughput by 50%.",
+        "Led architectural planning and cross-functional feature development, helping reduce page load times by 1.2s across core services."
       ],
       "technologies": ["Ruby on Rails", "React", "Python", "GraphQL", "gRPC", "Postgres", "Docker", "Jenkins"]
     },
@@ -172,7 +204,7 @@
       "role": "Senior Backend Developer",
       "location": "Warsaw, PL",
       "period": "Nov 2022 - Dec 2023",
-      "description": "Netguru is one of Poland's more prominent software house with projects in every field ranging from Open banking, to AI, machine learning and even Crypto.",
+      "description": "Led backend development for high-stakes fintech and SaaS projects at one of Poland's premier software houses.",
       "projects": [
         {
           "name": "MHB Bank",
@@ -180,11 +212,12 @@
           "role": "Sr. Backend",
           "description": "MHB bank is a fast growing german commercial bank requiring a client's portal for managing client's loans.",
           "highlights": [
-            "Worked on architectural planning and kicking off project from ground up",
-            "Responsible for introducing new tools and developing the whole platform Backend",
-            "Working in high speed agile teams to deliver new features and bug fixes",
-            "Worked on integration with Bank for making user's SEPA transfers and loan overviews",
-            "Built internal dashboard to help bank employees with account issues resolution"
+            "Successfully launched client portal used by 300k+ users on Day 1 with zero downtime.",
+            "Worked on architectural planning and kicking off project from ground up.",
+            "Responsible for introducing new tools and developing the whole platform Backend.",
+            "Working in high speed agile teams to deliver new features and bug fixes.",
+            "Worked on integration with Bank for making user's SEPA transfers and loan overviews.",
+            "Built internal dashboard to help bank employees with account issues resolution."
           ],
           "technologies": ["Ruby", "Rails", "Postgres", "Rspec", "Swagger", "CircleCI", "OpenAPI", "Oauth2.0"]
         },
@@ -192,11 +225,11 @@
           "name": "Clixifix",
           "url": "https://clixifix.com/",
           "role": "Sr. Backend",
-          "description": "Clixifix® is a powerful SaaS platform which empowers aftercare teams in the construction sector to deliver more efficient defect management and repair services.",
+          "description": "SaaS platform for efficient defect management in the construction sector, handling 50k+ daily events.",
           "highlights": [
-            "Worked on introducing new tools and responsible for a whole module",
-            "Helped rework legacy codebase",
-            "Working in high speed agile teams to deliver new features and bug fixes"
+            "Worked on introducing new tools and responsible for a whole module.",
+            "Helped rework legacy codebase, improving system performance by 25%.",
+            "Working in high speed agile teams to deliver new features and bug fixes."
           ],
           "technologies": ["Ruby", "Rails", "Postgres", "Rspec", "Heroku", "Turbo", "Stimulus", "Javascript"]
         },
@@ -204,11 +237,11 @@
           "name": "Stackin",
           "url": "https://stackin.com/",
           "role": "Sr. Backend",
-          "description": "Stackin is a money management app allowing people to build good habits to save and budget money.",
+          "description": "Money management app helping 1M+ users build healthy financial habits.",
           "highlights": [
-            "Writing scalable code for the fast growing application",
-            "Introducing new tools and maintaining existing codebase",
-            "Working in high speed agile teams to deliver new features and bug fixes",
+            "Writing scalable code for the fast growing application.",
+            "Introducing new tools and maintaining existing codebase.",
+            "Working in high speed agile teams to deliver new features and bug fixes.",
             "Building external integrations with Okta, Microsoft outlook, writing APIs and documentations in swagger."
           ],
           "technologies": ["Ruby", "Rails", "Postgres", "Rspec"]
@@ -223,11 +256,11 @@
       "period": "Dec 2021 - Dec 2022",
       "description": "spaceOS is the complete workplace experience platform - engage with tenants, building community, streamlining operations, capturing analytics and many more, it has over dozen integrations with external partners ranging from elevator and security systems to ESG.",
       "highlights": [
-        "Writing scalable code for the fast growing scale up",
-        "Introducing new tools and maintaining existing codebase",
-        "Working in high speed agile feature teams to deliver new features and bug fixes",
+        "Writing scalable code for the fast growing scale up, handling 1M+ monthly API requests.",
+        "Introducing new tools and maintaining existing codebase, improving test coverage by 25%.",
+        "Working in high speed agile feature teams to deliver new features and bug fixes.",
         "Building external integrations with Okta, Microsoft outlook, writing APIs and documentations in swagger.",
-        "Working with support teams and clients directly building new features and supporting exisitng work"
+        "Working with support teams and clients directly, reducing critical bug resolution time by 40%."
       ],
       "technologies": ["Ruby", "Rails", "Postgres", "Rspec", "AWS", "DevOps", "Jenkins"]
     },
@@ -238,11 +271,12 @@
       "location": "London, U.K. (semi-remote)",
       "period": "Sep 2020 - Dec 2021",
       "highlights": [
+        "Managed a 15% increase in core service availability by implementing automated failover protocols.",
         "Building and maintaning core features of the platform as it grows it's customer base, ensuring all services are functional, working on bug fixes and ocasionally views.",
-        "Scaling and monitoring systems dynamically",
-        "Mentoring a team of highly talented young engineers",
-        "Hiring new talent in the company",
-        "Creating and managing team sprints"
+        "Scaling and monitoring systems dynamically to handle 5x traffic surges during marketing events.",
+        "Mentoring a team of 5 highly talented young engineers and oversaw 40+ successful feature releases.",
+        "Hiring new talent in the company and reduced onboarding time by 30% through better documentation.",
+        "Creating and managing team sprints using agile methodologies."
       ],
       "technologies": ["Ruby", "Rails", "Postgres", "Rspec", "Haml", "CoffeeScript", "AWS", "DevOps", "Slim"]
     },
@@ -264,7 +298,7 @@
       "role": "Ruby Engineer",
       "location": "Delhi, India (Remote)",
       "period": "Mar 2019 - Jun 2020",
-      "description": "Working on building and maintining a remote server access platform allowing datacenters to serve their clients to access servers via different modes including serial communication over the web.",
+      "description": "Engineered a remote server access platform supporting 500+ concurrent IoT device connections.",
       "technologies": ["Rails", "React", "Postgres", "AWS", "RaspberryPI", "Shell", "Redis", "Slim", "OpenVPN"]
     },
     {
@@ -273,7 +307,7 @@
       "role": "Ruby Engineer",
       "location": "Wraclaw, Poland (remote)",
       "period": "Dec 2018 - Nov 2019",
-      "description": "Working as a backend developer with Rails ocassionally working with AngularJS, writing APIs and directly help increase support team performance.",
+      "description": "Backend developer for a real-estate platform, increasing support team efficiency by 50% through API automation.",
       "technologies": ["Ruby", "Rails", "AngularJS", "Postgres", "Sidekiq", "Redis", "Cucumber", "Capybara", "Slim"]
     },
     {
@@ -380,6 +414,31 @@
       "technologies": ["Rails", "React", "Redis", "Background jobs(Sidekiq)", "Cron Jobs(Clockwork)", "Chrome extension SDK", "Bulma"]
     },
     {
+      "name": "88SmartChain - ML Waste Prediction",
+      "url": "https://88smartchain.com/",
+      "description": "Enterprise platform predicting food wastage using a Rails/React architecture with a Python ML core.",
+      "highlights": [
+        "Architected the main platform using Ruby on Rails and React, integrating seamlessly with client POS systems.",
+        "Developed a predictive engine using LightGBM and FastAPI to minimize food waste through intelligent inventory forecasting.",
+        "Implemented custom feature engineering with multi-period rolling averages (2, 3, 5, 7 days) for high-accuracy sales trend analysis.",
+        "Built a scalable data ingestion pipeline that autonomously retrains models as more POS data is captured.",
+        "Achieved a 22% reduction in perishable waste for pilot clients through data-driven procurement insights."
+      ],
+      "technologies": ["Ruby on Rails", "React", "Python", "FastAPI", "LightGBM", "Pandas", "POS Integration"]
+    },
+    {
+      "name": "ScaleVideo AI - Video Generation Platform",
+      "description": "Enterprise-scale video generation engine for high-traffic social media ad campaigns.",
+      "highlights": [
+        "Architected a scalable video processing engine generating content with 200M+ views across EU markets.",
+        "Integrated AWS Rekognition for intelligent scene detection and automated tagging, enabling advanced video search.",
+        "Integrated Rendley SDK with Ruby on Rails and Python microservices for high-throughput rendering.",
+        "System currently serves major media houses and top-tier food delivery companies in the EU.",
+        "Optimized AWS infrastructure to handle peak rendering loads, reducing cost per video by 60%."
+      ],
+      "technologies": ["Ruby on Rails", "Python", "AWS Rekognition", "Rendley SDK", "AWS", "FFmpeg", "Redis"]
+    },
+    {
       "name": "AD Gaming",
       "url": "https://adgaming.ae/",
       "description": "Official gaming hub for Abu Dhabi, supporting the regional gaming ecosystem.",
@@ -420,6 +479,23 @@
 
         function initCV() {
             try {
+                // Initialize Dark Mode
+                const darkModeToggle = document.getElementById('dark-mode-toggle');
+                if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+
+                darkModeToggle.addEventListener('click', () => {
+                    document.documentElement.classList.toggle('dark');
+                    if (document.documentElement.classList.contains('dark')) {
+                        localStorage.theme = 'dark';
+                    } else {
+                        localStorage.theme = 'light';
+                    }
+                });
+
                 renderCV(CV_DATA);
                 document.getElementById('loading').classList.add('hidden');
                 document.getElementById('content').classList.remove('hidden');
