@@ -172,7 +172,7 @@
   "personal_info": {
     "name": "Ritwick Malhotra",
     "title": "Web Developer",
-        "about": "Senior Software Engineer with 8+ years of experience building high-scale distributed systems and AI-driven products. Expert in Ruby on Rails, React, and Python, with a proven track record of optimizing platforms for 80M+ users and reducing server response times by 45%. Passionate about bridging hardware and software through custom IoT solutions and AI vision systems.",
+        "about": "Senior Software Engineer with 8+ years of experience building high-scale distributed systems and recently AI-driven products. Expert in Ruby on Rails, React, and Python, with a proven track record of optimizing platforms for 80M+ users and reducing server response times by 45%. Passionate about bridging hardware and software through custom IoT solutions and AI vision systems.",
     "contact": {
       "phone": "+48 577 599 195",
       "email": "malhotraritwick2011@gmail.com",
@@ -451,6 +451,14 @@
     }
   ],
   "skills": {
+    "education": [
+      {
+        "school": "Warsaw University of Technology",
+        "degree": "B.Sc. in Computer Science",
+        "year": "2021",
+        "location": "Warsaw, Poland"
+      }
+    ],
     "languages_and_frameworks": ["HTML", "CSS", "JS", "React", "Ruby", "Rails", "Postgresql", "C/C++", "Jquery", "Docker", "AngularJS", "VueJs", "Git", "Data Visualization (ThreeJS)"],
     "courses": [
       {
@@ -506,135 +514,153 @@
         }
 
         function renderCV(data) {
-            // Personal Info
-            document.getElementById('user-name').textContent = data.personal_info.name;
-            document.getElementById('user-title').textContent = data.personal_info.title;
-            document.getElementById('about-text').textContent = data.personal_info.about;
+          // Personal Info
+          document.getElementById('user-name').textContent = data.personal_info.name;
+          document.getElementById('user-title').textContent = data.personal_info.title;
+          document.getElementById('about-text').textContent = data.personal_info.about;
 
-            // Contact Info
-            const contact = data.personal_info.contact;
-            document.getElementById('contact-info').innerHTML = `
-                <a href="tel:${contact.phone}" class="flex items-center hover:text-blue-600"><i class="fas fa-phone mr-2 text-blue-600 opacity-75"></i> ${contact.phone}</a>
-                <a href="mailto:${contact.email}" class="flex items-center hover:text-blue-600"><i class="fas fa-envelope mr-2 text-blue-600 opacity-75"></i> ${contact.email}</a>
-                <span class="flex items-center"><i class="fas fa-map-marker-alt mr-2 text-blue-600 opacity-75"></i> ${contact.location}</span>
-                <a href="${contact.github}" target="_blank" class="flex items-center hover:text-blue-600"><i class="fab fa-github mr-2 text-blue-600 opacity-75"></i> GitHub</a>
-                <a href="${contact.linkedin}" target="_blank" class="flex items-center hover:text-blue-600"><i class="fab fa-linkedin mr-2 text-blue-600 opacity-75"></i> LinkedIn</a>
-            `;
+          // Contact Info
+          const contact = data.personal_info.contact;
+          document.getElementById('contact-info').innerHTML = `
+              <a href="tel:${contact.phone}" class="flex items-center hover:text-blue-600"><i class="fas fa-phone mr-2 text-blue-600 opacity-75"></i> ${contact.phone}</a>
+              <a href="mailto:${contact.email}" class="flex items-center hover:text-blue-600"><i class="fas fa-envelope mr-2 text-blue-600 opacity-75"></i> ${contact.email}</a>
+              <span class="flex items-center"><i class="fas fa-map-marker-alt mr-2 text-blue-600 opacity-75"></i> ${contact.location}</span>
+              <a href="${contact.github}" target="_blank" class="flex items-center hover:text-blue-600"><i class="fab fa-github mr-2 text-blue-600 opacity-75"></i> GitHub</a>
+              <a href="${contact.linkedin}" target="_blank" class="flex items-center hover:text-blue-600"><i class="fab fa-linkedin mr-2 text-blue-600 opacity-75"></i> LinkedIn</a>
+          `;
 
-            const skillsContainer = document.getElementById('skills-list');
-            const categories = {
-                "Backend & Architecture": ["Ruby on Rails", "Python", "gRPC", "GraphQL", "Postgresql", "C/C++", "Redis"],
-                "Frontend & Mobile": ["React", "React Native", "ThreeJS", "AngularJS", "VueJs", "Tailwind CSS"],
-                "Cloud & DevOps": ["Kamal", "Docker", "Kubernetes", "AWS", "Azure", "GCP", "Linode (Bare Metal)"],
-                "Specialized": ["AI Vision (YOLO)", "PCB Design (KiCad)", "3D Printing", "IoT", "Data Visualization"]
-            };
+          const skillsContainer = document.getElementById('skills-list');
+          const categories = {
+              "Backend & Architecture": ["Ruby on Rails", "Python", "gRPC", "GraphQL", "Postgresql", "C/C++", "Redis"],
+              "Frontend & Mobile": ["React", "React Native", "ThreeJS", "AngularJS", "VueJs", "Tailwind CSS"],
+              "Cloud & DevOps": ["Kamal", "Docker", "Kubernetes", "AWS", "Azure", "GCP", "Linode (Bare Metal)"],
+              "Specialized": ["AI Vision (YOLO)", "PCB Design (KiCad)", "3D Printing", "IoT", "Data Visualization"]
+          };
 
-            skillsContainer.innerHTML = '';
-            Object.entries(categories).forEach(([category, skills]) => {
-                const catDiv = document.createElement('div');
-                catDiv.className = 'w-full mb-3';
-                catDiv.innerHTML = `
-                    <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">${category}</div>
-                    <div class="flex flex-wrap -m-0.5">
-                        ${skills.map(skill => `<span class="skill-badge">${skill}</span>`).join('')}
-                    </div>
-                `;
-                skillsContainer.appendChild(catDiv);
-            });
+          skillsContainer.innerHTML = '';
+          Object.entries(categories).forEach(([category, skills]) => {
+              const catDiv = document.createElement('div');
+              catDiv.className = 'w-full mb-3';
+              catDiv.innerHTML = `
+                  <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">${category}</div>
+                  <div class="flex flex-wrap -m-0.5">
+                      ${skills.map(skill => `<span class="skill-badge">${skill}</span>`).join('')}
+                  </div>
+              `;
+              skillsContainer.appendChild(catDiv);
+          });
 
-            // Languages
-            const languagesContainer = document.getElementById('languages-list');
-            data.skills.languages.forEach(lang => {
-                const p = document.createElement('p');
-                p.innerHTML = `<span class="font-semibold">${lang.name}</span>: ${lang.level}`;
-                languagesContainer.appendChild(p);
-            });
+          // Education
+          const educationContainer = document.getElementById('courses-list');
+          educationContainer.innerHTML = '';
+          data.skills.education.forEach(edu => {
+              const div = document.createElement('div');
+              div.className = 'mb-2';
+              div.innerHTML = `
+                  <div class="flex justify-between items-baseline">
+                      <h3 class="text-sm font-bold text-gray-900">${edu.school}</h3>
+                      <span class="text-xs font-bold text-blue-600">${edu.year}</span>
+                  </div>
+                  <p class="text-xs text-gray-600 mb-1">${edu.degree}</p>
+              `;
+              
+              // Add courses specifically under this education entry
+              if (data.skills.courses) {
+                  const coursesDiv = document.createElement('div');
+                  coursesDiv.className = 'mt-1 space-y-0.5';
+                  data.skills.courses.forEach(course => {
+                      const p = document.createElement('p');
+                      p.className = 'text-[11px] text-gray-500 flex justify-between leading-tight';
+                      p.innerHTML = `<span>• ${course.name}</span> <span class="text-gray-400 opacity-75">${course.id || ''}</span>`;
+                      coursesDiv.appendChild(p);
+                  });
+                  div.appendChild(coursesDiv);
+              }
+              
+              educationContainer.appendChild(div);
+          });
 
-            // Work Experience
-            const experienceContainer = document.getElementById('experience-list');
-            data.work_experience.forEach(exp => {
-                const div = document.createElement('div');
-                div.className = 'relative';
-                
-                let content = `
-                    <div class="mb-1 flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
-                        <h3 class="text-lg font-bold text-gray-900">${exp.company_url ? `<a href="${exp.company_url}" class="hover:text-blue-600 transition-colors">` : ''}${exp.company}${exp.company_url ? '</a>' : ''} <span class="text-sm font-normal text-gray-500 ml-1">| ${exp.role}</span></h3>
-                        <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded uppercase tracking-wider">${exp.period}</span>
-                    </div>
-                    <div class="text-xs text-gray-500 mb-2 italic">${exp.location}</div>
-                    ${exp.description ? `<p class="text-sm text-gray-600 mb-2 leading-relaxed">${exp.description}</p>` : ''}
-                `;
+          // Languages
+          const languagesContainer = document.getElementById('languages-list');
+          data.skills.languages.forEach(lang => {
+              const p = document.createElement('p');
+              p.innerHTML = `<span class="font-semibold">${lang.name}</span>: ${lang.level}`;
+              languagesContainer.appendChild(p);
+          });
 
-                if (exp.projects) {
-                    exp.projects.forEach(project => {
-                        content += `
-                            <div class="mt-3 ml-2 border-l-2 border-gray-100 pl-3">
-                                <h4 class="text-sm font-bold text-gray-800">${project.url ? `<a href="${project.url}" class="hover:text-blue-600">` : ''}${project.name}${project.url ? '</a>' : ''} <span class="text-xs font-normal text-gray-500">[${project.role}]</span></h4>
-                                <p class="text-xs text-gray-500 mb-1 italic">${project.description}</p>
-                                <ul class="list-disc list-outside ml-4 text-xs text-gray-600 space-y-0.5 mb-1">
-                                    ${project.highlights.map(h => `<li>${h}</li>`).join('')}
-                                </ul>
-                                ${project.technologies ? `<p class="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Tools: ${project.technologies.join(', ')}</p>` : ''}
-                            </div>
-                        `;
-                    });
-                } else if (exp.highlights) {
-                    content += `
-                        <ul class="list-disc list-outside ml-6 text-sm text-gray-600 space-y-0.5 mb-2">
-                            ${exp.highlights.map(h => `<li>${h}</li>`).join('')}
-                        </ul>
-                    `;
-                }
+          // Work Experience
+          const experienceContainer = document.getElementById('experience-list');
+          data.work_experience.forEach(exp => {
+              const div = document.createElement('div');
+              div.className = 'relative';
+              
+              let content = `
+                  <div class="mb-1 flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
+                      <h3 class="text-lg font-bold text-gray-900">${exp.company_url ? `<a href="${exp.company_url}" class="hover:text-blue-600 transition-colors">` : ''}${exp.company}${exp.company_url ? '</a>' : ''} <span class="text-sm font-normal text-gray-500 ml-1">| ${exp.role}</span></h3>
+                      <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded uppercase tracking-wider">${exp.period}</span>
+                  </div>
+                  <div class="text-xs text-gray-500 mb-2 italic">${exp.location}</div>
+                  ${exp.description ? `<p class="text-sm text-gray-600 mb-2 leading-relaxed">${exp.description}</p>` : ''}
+              `;
 
-                if (exp.technologies) {
-                    content += `<p class="text-[10px] font-bold text-gray-400 mt-1 uppercase tracking-tighter">Stack: ${exp.technologies.join(', ')}</p>`;
-                }
+              if (exp.projects) {
+                  exp.projects.forEach(project => {
+                      content += `
+                          <div class="mt-3 ml-2 border-l-2 border-gray-100 pl-3">
+                              <h4 class="text-sm font-bold text-gray-800">${project.url ? `<a href="${project.url}" class="hover:text-blue-600">` : ''}${project.name}${project.url ? '</a>' : ''} <span class="text-xs font-normal text-gray-500">[${project.role}]</span></h4>
+                              <p class="text-xs text-gray-500 mb-1 italic">${project.description}</p>
+                              <ul class="list-disc list-outside ml-4 text-xs text-gray-600 space-y-0.5 mb-1">
+                                  ${project.highlights.map(h => `<li>${h}</li>`).join('')}
+                              </ul>
+                              ${project.technologies ? `<p class="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Tools: ${project.technologies.join(', ')}</p>` : ''}
+                          </div>
+                      `;
+                  });
+              } else if (exp.highlights) {
+                  content += `
+                      <ul class="list-disc list-outside ml-6 text-sm text-gray-600 space-y-0.5 mb-2">
+                          ${exp.highlights.map(h => `<li>${h}</li>`).join('')}
+                      </ul>
+                  `;
+              }
 
-                div.innerHTML = content;
-                experienceContainer.appendChild(div);
-            });
+              if (exp.technologies) {
+                  content += `<p class="text-[10px] font-bold text-gray-400 mt-1 uppercase tracking-tighter">Stack: ${exp.technologies.join(', ')}</p>`;
+              }
 
-            // Personal Projects
-            const projectsContainer = document.getElementById('projects-list');
-            data.personal_projects.forEach(project => {
-                const div = document.createElement('div');
-                div.className = 'group';
-                
-                let content = `
-                    <div class="flex items-baseline justify-between mb-1">
-                        <h3 class="text-sm font-bold text-gray-900 flex items-center">
-                            ${project.url ? `<a href="${project.url}" class="hover:text-blue-600">` : ''}${project.name}${project.url ? '</a>' : ''}
-                            ${project.github ? `<a href="${project.github}" class="ml-1.5 text-gray-400 hover:text-gray-600"><i class="fab fa-github text-xs"></i></a>` : ''}
-                        </h3>
-                    </div>
-                    <p class="text-xs text-gray-600 mb-2">${project.description}</p>
-                `;
+              div.innerHTML = content;
+              experienceContainer.appendChild(div);
+          });
 
-                if (project.highlights) {
-                    content += `
-                        <ul class="list-disc list-outside ml-4 text-[11px] text-gray-500 space-y-0.5 mb-2">
-                            ${project.highlights.map(h => `<li>${h}</li>`).join('')}
-                        </ul>
-                    `;
-                }
+          // Personal Projects
+          const projectsContainer = document.getElementById('projects-list');
+          data.personal_projects.forEach(project => {
+              const div = document.createElement('div');
+              div.className = 'group';
+              
+              let content = `
+                  <div class="flex items-baseline justify-between mb-1">
+                      <h3 class="text-sm font-bold text-gray-900 flex items-center">
+                          ${project.url ? `<a href="${project.url}" class="hover:text-blue-600">` : ''}${project.name}${project.url ? '</a>' : ''}
+                          ${project.github ? `<a href="${project.github}" class="ml-1.5 text-gray-400 hover:text-gray-600"><i class="fab fa-github text-xs"></i></a>` : ''}
+                      </h3>
+                  </div>
+                  <p class="text-xs text-gray-600 mb-2">${project.description}</p>
+              `;
 
-                content += `<p class="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Tech: ${project.technologies.join(', ')}</p>`;
+              if (project.highlights) {
+                  content += `
+                      <ul class="list-disc list-outside ml-4 text-[11px] text-gray-500 space-y-0.5 mb-2">
+                          ${project.highlights.map(h => `<li>${h}</li>`).join('')}
+                      </ul>
+                  `;
+              }
 
-                div.innerHTML = content;
-                projectsContainer.appendChild(div);
-            });
+              content += `<p class="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Tech: ${project.technologies.join(', ')}</p>`;
 
-            // Courses
-            const coursesContainer = document.getElementById('courses-list');
-            data.skills.courses.forEach(course => {
-                const div = document.createElement('div');
-                div.className = 'text-xs';
-                div.innerHTML = `
-                    <div class="font-bold text-gray-700 underline decoration-gray-200 underline-offset-2">${course.url ? `<a href="${course.url}" class="hover:text-blue-600 transition-colors">` : ''}${course.name}${course.url ? '</a>' : ''}</div>
-                    ${course.id ? `<div class="text-[10px] text-gray-400 mt-0.5 uppercase tracking-wide">${course.id}</div>` : ''}
-                `;
-                coursesContainer.appendChild(div);
-            });
+              div.innerHTML = content;
+              projectsContainer.appendChild(div);
+          });
         }
 
         initCV();
